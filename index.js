@@ -4,7 +4,14 @@
 	var config = require("./config");
 	var danmu = require("./danmu");
 	var listener = require("./listener");
+	var penetrate = require("./penetrate");
+
+	var crypto = require('crypto');
+	var md5 = crypto.createHash("md5");
+
 	win.showDevTools();
+
+	document.title = "DANMU Client - Client ID = " + crypto.createHash('md5').update(Math.random().toString()).digest('hex');
 
 	var isStart = false;
 	window.addEventListener("keydown", function(e) {
@@ -14,6 +21,8 @@
 			document.querySelector("body").style.background = "transparent";
 			listener.init(config);
 			danmu.init(config, listener, document.getElementById("main-canvas"));
+			penetrate.init();
+			isStart = true;
 		}
 	}, true);
 
@@ -26,4 +35,8 @@
 	window.addEventListener("resize", resizeFunction);
 	resizeFunction();
 
+
+
+	
+	
 })();

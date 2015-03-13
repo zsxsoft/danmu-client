@@ -21,11 +21,22 @@
   "homepage": "https://github.com/zsxsoft/danmu-client",
   "dependencies": {
     "nw": "*",
-    "socket.io-client": "*"
+    "socket.io-client": "*",
+    "nw-penetrate": "*"
+  },
+  "dev-dependencies": {
+    "nw-gyp": "*"
   },
   "window": {
     "transparent": true,
     "frame": false,
-    "toolbar": false
+    "toolbar": false,
+    "always-on-top": true,
+    "position": "mouse",
+    "title": "DANMU Client"
+  },
+  "scripts": {
+    "go": "nw",
+    "go-lin": "nw --enable-transparent-visuals --disable-gpu"
   }
 }
