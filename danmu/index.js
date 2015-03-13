@@ -28,14 +28,22 @@ var showSingleBarrage = function(param) {
 	}], player);
 	player.controlDanmu("update");
 }
+	// Test Code
 window.barrage = showSingleBarrage;
+window.tryDanmu = function() {
+	setInterval(function() {
+		showSingleBarrage({
+			text: "Hello World",
+			color: "rgb(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
+		})
+	}, 10);
+}
 
 module.exports = {
 	init: function(config, listener, object) {
-		player = new DD.Player("main-canvas", object);
+		player = new DD.Player("main-canvas", object, config);
 		player.init("canvas", "fuck");
 		player.controlDanmu("play");
-		console.log(showSingleBarrage);
 	},
 	DD: DD
 };

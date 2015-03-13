@@ -14,5 +14,4 @@ var plugins = [
 for (var i = 0; i <= plugins.length - 1; i++) {
 	plugins[i].init.call(this, DD);
 };
-console.log(DD);
 module.exports = DD;
