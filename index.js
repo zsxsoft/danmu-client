@@ -5,9 +5,9 @@
 	global.coordinator = new (require('events').EventEmitter);
 
 	var config = require("./config");
-	var danmu = require("./danmu");
-	var listener = require("./listener");
-	var penetrate = require("./penetrate");
+	var danmu = require("./lib/danmu");
+	var listener = require("./lib/listener");
+	var penetrate = require("./lib/penetrate");
 
 	var crypto = require('crypto');
 	var md5 = crypto.createHash("md5");
