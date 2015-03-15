@@ -1,4 +1,8 @@
 module.exports = {
+	socket: {
+		url: "http://127.0.0.1:3000",
+		password: "123456"
+	},
 	display: {
 		comment: {
 			animationStyle: "Scroll",

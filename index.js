@@ -1,6 +1,9 @@
 (function() {
 	var gui = require('nw.gui');
 	var win = gui.Window.get();
+	win.showDevTools();
+	global.coordinator = new (require('events').EventEmitter);
+
 	var config = require("./config");
 	var danmu = require("./danmu");
 	var listener = require("./listener");
@@ -9,7 +12,8 @@
 	var crypto = require('crypto');
 	var md5 = crypto.createHash("md5");
 
-	win.showDevTools();
+
+
 
 	document.title = "DANMU Client - Client ID = " + crypto.createHash('md5').update(Math.random().toString()).digest('hex');
 
@@ -37,6 +41,4 @@
 
 
 
-	
-	
 })();

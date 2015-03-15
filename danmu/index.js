@@ -3,8 +3,7 @@ var player;
 /*var resisterSocket = [{
 	event: "barrage",
 	func: function(data) {
-		player.parseDanmus(data.data, player);
-		player.controlDanmu("update");
+		
 	}
 }, {
 	event: "sendBarrage",
@@ -19,6 +18,11 @@ var player;
 }];
 */
 
+coordinator.on("gotDanmu", function(data) {
+	player.parseDanmus(data, player);
+	player.controlDanmu("update");
+})
+
 var showSingleBarrage = function(param) {
 	player.parseDanmus([{
 		'style': param.style,
@@ -28,7 +32,8 @@ var showSingleBarrage = function(param) {
 	}], player);
 	player.controlDanmu("update");
 }
-	// Test Code
+
+// 测试用代码
 window.barrage = showSingleBarrage;
 window.tryDanmu = function() {
 	setInterval(function() {
