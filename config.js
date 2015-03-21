@@ -2,7 +2,8 @@ module.exports = {
 	socket: {
 		url: "http://127.0.0.1:3000",
 		password: "123456",
-		room: "default"
+		room: "default",
+		heartbeat: 3000
 	},
 	display: {
 		comment: {

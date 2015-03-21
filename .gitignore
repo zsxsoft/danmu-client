@@ -1,3 +1,6 @@
+/cache
+/webkitbuilds
+
 # Logs
 logs
 *.log
@@ -73,3 +76,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
