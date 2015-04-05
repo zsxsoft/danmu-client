@@ -7,7 +7,7 @@ module.exports = {
 	},
 	display: {
 		comment: {
-			animationStyle: "Scroll",
+			animationStyle: "scroll",
 			fontStyle: "normal bold 3em 微软雅黑",
 			fontColor: "rgb(255, 255, 255)",
 			lifeTime: 240,
