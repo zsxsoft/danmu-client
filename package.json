@@ -14,7 +14,7 @@
     "Danmu"
   ],
   "author": "zsx <zsx@zsxsoft.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zsxsoft/danmu-client/issues"
   },
