@@ -22,13 +22,14 @@
   "dependencies": {
     "nw": "*",
     "socket.io-client": "*",
-    "nw-penetrate": "*"
+    "nw-penetrate": "~0.0.3"
   },
-  "dev-dependencies": {
+  "devDependencies": {
     "nw-gyp": "*",
-    "grunt": "~0.4.1",
-    "grunt-node-webkit-builder": "*",
-    "grunt-contrib-jshint": "*"
+    "grunt": "~0.4.2",
+    "node-webkit-builder": "~1.0.11",
+    "grunt-contrib-jshint": "~0.11.2",
+    "grunt-contrib-copy": "~0.8.0"
   },
   "window": {
     "transparent": true,

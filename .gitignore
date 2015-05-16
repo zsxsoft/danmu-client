@@ -1,5 +1,6 @@
 /cache
-/webkitbuilds
+/builds
+/typings
 
 # Logs
 logs
