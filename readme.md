@@ -9,19 +9,19 @@ danmu-client
 - 窗口置于最前，完全透明可穿透，用户可用键鼠等与其他程序正常交互。
 - 提供紧急清空弹幕池、停止接收弹幕等功能。 
 
+## 直接启动程序
+
+目前仅有Windows x86版本可用。
+
+1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
+2. 双击目录下的``danmu``，启动成功。
+
 ## 源代码部署说明
 
 1. 下载并安装[Nodejs](https://nodejs.org)或[iojs](https://iojs.org/cn)，同时需要安装[Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)以便编译C++组件。
 2. 命令行切换到工程目录下，执行``npm install``，等待自动下载和编译组件。（如果不想通过npm下载nw，可以在``package.json``里去掉``nw``再将其手动拷贝到工程目录下）。
 3. 执行``nw``，启动成功。
 
-## 不编译部署说明
-
-目前仅有Windows x86版本可用。
-
-1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
-2. 直接用git clone得到的代码覆盖解压后的文件。
-3. 双击目录下的``nw``，启动成功。
 
 ## 发布说明
 
@@ -29,7 +29,7 @@ danmu-client
 2. 下载[rid](https://github.com/ironSource/rename-import-dll)以便修改可执行文件名。
 3. 执行``grunt``。
 4. （仅限x86）将``builds``下``win32``复制出并进入，执行``(for /r %i in (*.node) do @echo %i && rid %i nw.exe danmu.exe) && ren nw.exe danmu.exe``.
-5. 用各种PE信息修改工具修改文件属性即可。
+5. 用各种PE信息修改工具修改文件属性即可（如Visual Studio）。
 
 ## 协议
 The MIT License (MIT)
