@@ -23,6 +23,14 @@ danmu-client
 2. 直接用git clone得到的代码覆盖解压后的文件。
 3. 双击目录下的``nw``，启动成功。
 
+## 发布说明
+
+1. 下载nw-penetrate的[编译版本](https://github.com/zsxsoft/nw-penetrate/releases/)，分别解压到``cache\node_modules\系统版本（win32或win64）\nw-penetrate\build\Release``目录下。
+2. 下载[rid](https://github.com/ironSource/rename-import-dll)以便修改可执行文件名。
+3. 执行``grunt``。
+4. （仅限x86）将``builds``下``win32``复制出并进入，执行``(for /r %i in (*.node) do @echo %i && rid %i nw.exe danmu.exe) && ren nw.exe danmu.exe``.
+5. 用各种PE信息修改工具修改文件属性即可。
+
 ## 协议
 The MIT License (MIT)
 
