@@ -4,7 +4,9 @@
   "description": "Danmu client",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "go": "nw",
+    "go-lin": "nw --enable-transparent-visuals --disable-gpu"
   },
   "repository": {
     "type": "git",
@@ -38,9 +40,5 @@
     "always-on-top": true,
     "position": "mouse",
     "title": "DANMU Client"
-  },
-  "scripts": {
-    "go": "nw",
-    "go-lin": "nw --enable-transparent-visuals --disable-gpu"
   }
 }
