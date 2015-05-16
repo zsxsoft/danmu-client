@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 						copyFiles.push({
 							expand: true,
 							src: [
-								'./package.json', './index.js', './index.html', './config.js', './lib/**', 
+								'./package.json', './panel.*', './index.*', './config.js', './lib/**', 
 								'./node_modules/socket.io-client/**', 
 								'./node_modules/nw-penetrate/package.json', './node_modules/nw-penetrate/bindings-fork/**', './node_modules/nw-penetrate/index.js'],
 							dest: buildDir + exeName + "/" + platform
