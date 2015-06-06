@@ -28,11 +28,19 @@ danmu-client
 1. 下载nw-penetrate的[编译版本](https://github.com/zsxsoft/nw-penetrate/releases/)，分别解压到``cache\node_modules\系统版本（win32或win64）\nw-penetrate\build\Release``目录下。
 2. 下载[rid](https://github.com/ironSource/rename-import-dll)以便修改可执行文件名。
 3. 执行``grunt``。
-4. （仅限x86）将``builds``下``win32``复制出并进入，执行``(for /r %i in (*.node) do @echo %i && rid %i nw.exe danmu.exe) && ren nw.exe danmu.exe``.
+4. 将``builds``下``win32``复制出并进入，执行``(for /r %i in (*.node) do @echo %i && rid %i nw.exe danmu.exe) && ren nw.exe danmu.exe``.
 5. 用各种PE信息修改工具修改文件属性即可（如Visual Studio）。
 
 ## 协议
 The MIT License (MIT)
+
+
+## 博文
+[弹幕服务器及搭配之透明弹幕客户端研究结题报告](http://blog.zsxsoft.com/post/15)
+
+[弹幕服务器及搭配之透明弹幕客户端研究中期报告](http://blog.zsxsoft.com/post/14)
+
+[弹幕服务器及搭配之透明弹幕客户端研究开题报告](http://blog.zsxsoft.com/post/13)
 
 ## 开发者
 zsx - http://www.zsxsoft.com / 博客 - http://blog.zsxsoft.com
