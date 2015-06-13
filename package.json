@@ -27,11 +27,12 @@
     "nw-penetrate": "~0.0.3"
   },
   "devDependencies": {
-    "nw-gyp": "*",
     "grunt": "~0.4.2",
-    "node-webkit-builder": "~1.0.11",
+    "grunt-commands": "^0.1.8",
+    "grunt-contrib-copy": "~0.8.0",
     "grunt-contrib-jshint": "~0.11.2",
-    "grunt-contrib-copy": "~0.8.0"
+    "node-webkit-builder": "~1.0.11",
+    "nw-gyp": "*"
   },
   "window": {
     "transparent": true,
