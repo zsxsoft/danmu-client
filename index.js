@@ -9,23 +9,20 @@
 		width: 400,
 		height: 200
 	});
+	// Console here
+	global.console = {
+		log: function(data) {
+			process.stdout.write(data + "\n");
+		}
+	};
+
 	var config = require("./config");
 	var danmu = require("./lib/danmu");
 	var listener = require("./lib/listener");
 	var penetrate = require("./lib/penetrate");
-
 	var crypto = require('crypto');
-
 	var isStart = false;
-	var resizeFunction = function (e) {
-		if (!isStart) {
-			document.querySelector(".border").style.width = window.outerWidth - 6 + "px";
-			document.querySelector(".border").style.height = window.outerHeight - 6 + "px";
-		}
-	};
-
-	document.title = "DANMU Client - Client ID = " + crypto.createHash('md5').update(Math.random().toString()).digest('hex');
-	window.addEventListener("keydown", function (e) {
+	var keydownFunction = function (e) {
 		if (e.keyCode == 13 && !isStart) {
 			document.getElementById("message").remove();
 			document.querySelector(".border").remove();
@@ -35,12 +32,10 @@
 			penetrate.init();
 			isStart = true;
 		}
-	}, true);
-	window.addEventListener("resize", resizeFunction);
+	}
 
-	resizeFunction();
+	document.title = "DANMU Client - Client ID = " + crypto.createHash('md5').update(Math.random().toString()).digest('hex');
+	window.addEventListener("keydown", keydownFunction, true);
 
-	global.panelWindow.on("windowControl", function (data) {
-	});
 	
 })();
