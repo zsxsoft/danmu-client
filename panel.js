@@ -26,11 +26,6 @@
 		controlButtons.item(i).addEventListener("click", contronClick);
 	}
 	
-	win.showDevTools('', true);
-	win.on("devtools-opened", function (url) {
-		win.closeDevTools(); // https://github.com/nwjs/nw.js/issues/2976
-		document.getElementById("iframe-href").innerText = url;
-	});
 	win.on("fps", function(fps) {
 		document.getElementById("txt-fps").innerText = fps;
 	});
