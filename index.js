@@ -1,14 +1,8 @@
 /* global panelWindow */
 /* global global */
 (function () {
-	var gui = require('nw.gui');
-	global.coordinator = new (require('events').EventEmitter);
-	global.panelWindow = gui.Window.open('panel.html', {
-		toolbar: false,
-		resizable: true,
-		width: 400,
-		height: 200
-	});
+	var windows = require('remote').getGlobal('windows');
+	var coordinator = require('remote').getGlobal('coordinator');
 	var config = require("./config");
 	var danmu = require("./lib/danmu");
 	var listener = require("./lib/listener");
@@ -40,7 +34,5 @@
 
 	resizeFunction();
 
-	global.panelWindow.on("windowControl", function (data) {
-	});
 	
 })();

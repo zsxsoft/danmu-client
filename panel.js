@@ -1,7 +1,7 @@
 /// <reference path="typings/node/node.d.ts"/>
 (function () {
-	var gui = require('nw.gui');
-	var win = gui.Window.get();
+
+	var windows = require('remote').getGlobal('windows');
 
 	var countQuitValue = 0;
 	document.querySelector("#btn-quit").addEventListener("click", function () {
@@ -18,20 +18,19 @@
 		return false;
 	});
 
-	var controlButtons = window.document.querySelectorAll(".btn-control");
+	var controlButtons = document.querySelectorAll(".btn-control");
 	var contronClick = function () {
-		win.emit(this.getAttribute("data-top"), this.getAttribute("data-param"));
+		windows.panelWindow.emit(this.getAttribute("data-top"), this.getAttribute("data-param"));
 	};
 	for (var i = 0; i < controlButtons.length; i++) {
 		controlButtons.item(i).addEventListener("click", contronClick);
 	}
 	
-	win.showDevTools('', true);
-	win.on("devtools-opened", function (url) {
-		win.closeDevTools(); // https://github.com/nwjs/nw.js/issues/2976
+	windows.panelWindow.on("devtools-opened", function (url) {
+		windows.panelWindow.closeDevTools(); // https://github.com/nwjs/nw.js/issues/2976
 		document.getElementById("iframe-href").innerText = url;
 	});
-	win.on("fps", function(fps) {
+	windows.panelWindow.on("fps", function(fps) {
 		document.getElementById("txt-fps").innerText = fps;
 	});
 })();
