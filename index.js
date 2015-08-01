@@ -9,12 +9,7 @@
 		width: 400,
 		height: 200
 	});
-	// Console here
-	global.console = {
-		log: function(data) {
-			process.stdout.write(data + "\n");
-		}
-	};
+
 
 	var config = require("./config");
 	var danmu = require("./lib/danmu");
@@ -23,15 +18,19 @@
 	var crypto = require('crypto');
 	var isStart = false;
 	var keydownFunction = function (e) {
+
 		if (e.keyCode == 13 && !isStart) {
 			document.getElementById("message").remove();
 			document.querySelector(".border").remove();
 			document.querySelector("body").style.background = "transparent";
+
 			listener.init(config);
 			danmu.init(config, listener, document.getElementById("main-canvas"));
 			penetrate.init();
+
 			isStart = true;
 		}
+
 	}
 
 	document.title = "DANMU Client - Client ID = " + crypto.createHash('md5').update(Math.random().toString()).digest('hex');
