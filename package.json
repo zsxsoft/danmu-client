@@ -39,7 +39,7 @@
     "frame": false,
     "toolbar": false,
     "always-on-top": true,
-    "title": "DANMU Client", 
-    "resizable": true
+    "resizable": true,
+    "title": "DANMU Client"
   }
 }

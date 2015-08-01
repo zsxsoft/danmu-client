@@ -26,10 +26,7 @@
 		controlButtons.item(i).addEventListener("click", contronClick);
 	}
 	
-	windows.panelWindow.on("devtools-opened", function (url) {
-		windows.panelWindow.closeDevTools(); // https://github.com/nwjs/nw.js/issues/2976
-		document.getElementById("iframe-href").innerText = url;
-	});
+
 	windows.panelWindow.on("fps", function(fps) {
 		document.getElementById("txt-fps").innerText = fps;
 	});
