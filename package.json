@@ -6,14 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "go": "nw",
-    "go-lin": "nw --enable-transparent-visuals --disable-gpu"
+    "go-lin": "nw --enable-transparent-visuals --disable-gpu",
+    "debug": "echo \"Open http://127.0.0.1:9222 for debug\" && nw --remote-debugging-port=9222"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/zsxsoft/danmu-client.git"
   },
   "keywords": [
-    "Danmu"
+    "danmu", 
+    "danmaku"
   ],
   "author": "zsx <zsx@zsxsoft.com>",
   "license": "MIT",
@@ -22,8 +24,8 @@
   },
   "homepage": "https://github.com/zsxsoft/danmu-client",
   "dependencies": {
-    "nw-penetrate": "~0.0.3",
-    "socket.io-client": "*"
+    "socket.io-client": "*",
+    "electron-penetrate": "~0.0.3"
   },
   "devDependencies": {
     "electron-prebuilt": "^0.30.2",
