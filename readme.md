@@ -24,7 +24,9 @@ danmu-client
 
 ## 调试工具打开说明
 
-对于已编译的程序，你可以打开命令提示符输入``danmu --remote-debugging-port=9222```；对于源代码部署，可输入``npm run debug``。然后打开``http://127.0.0.1:9222/``即可开始调试。
+对于已编译的程序，你可以打开命令提示符输入``danmu --remote-debugging-port=9222```；
+
+对于源代码部署，可输入``npm run debug``。然后打开``http://127.0.0.1:9222/``即可开始调试。
 
 ## 发布说明（Windows x86 + x64）
 
@@ -32,6 +34,25 @@ danmu-client
 2. 下载[rid](https://github.com/ironSource/rename-import-dll)，将其放到环境变量定义之处，或直接拷贝到项目根目录下。
 3. 执行``grunt``。
 4. 用各种PE信息修改工具修改文件属性即可（如Visual Studio）。
+
+## 配置说明
+根目录``config.js``下有配置，以下是说明
+
+    socket: {
+        url: "弹幕服务器开启的IP与端口（如使用反代，需要确认反代支持WebSocket连接）",
+        password: "弹幕服务器连接密码",
+        room: "选择连接弹幕服务器的某间房间",
+        heartbeat: 心跳包发送间隔
+    },
+    display: {
+        comment: {
+            animationStyle: "默认弹幕样式（支持scroll、reversescroll、staticdown、staticup）",
+            fontStyle: "默认字体样式",
+            fontColor: "默认颜色",
+            lifeTime: 每条弹幕的基本存活时间,
+            height: 每条弹幕占据高度
+        }
+    }
 
 ## 协议
 The MIT License (MIT)
