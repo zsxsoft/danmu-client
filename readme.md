@@ -1,13 +1,14 @@
 danmu-client
 ==========
 
-这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)，其基于项目[DDPlayer](https://github.com/dpy1123/ddplayer)所完善。
+这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。
 
 ## 功能特色
 - 以``WebSocket``作为通讯协议，用``Canvas``作为弹幕的画布。
 - 可在桌面任何位置显示弹幕，可与其他程序共同工作。
 - 窗口置于最前，完全透明可穿透，用户可用键鼠等与其他程序正常交互。
 - 提供紧急清空弹幕池、停止接收弹幕等功能。 
+- 支持图片弹幕
 
 ## 直接启动程序
 
@@ -81,3 +82,6 @@ The MIT License (MIT)
 
 ## 开发者
 zsx - http://www.zsxsoft.com / 博客 - http://blog.zsxsoft.com
+
+## 感谢
+[DDPlayer](https://github.com/dpy1123/ddplayer) by dpy1123
