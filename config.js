@@ -8,11 +8,11 @@ module.exports = {
 	display: {
 		comment: {
 			animationStyle: "scroll",
-			fontStyle: "normal bold 3em 微软雅黑",
+			fontStyle: "normal bold 5em 微软雅黑",
 			fontColor: "rgb(255, 255, 255)",
 			lifeTime: 240,
-			height: 30
+			height: 50
 		}, 
-		image: false
+		image: true
 	}
 };
