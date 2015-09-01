@@ -12,6 +12,7 @@
 
 
 	var config = require("./config");
+	global.config = config;
 	var danmu = require("./lib/danmu");
 	var listener = require("./lib/listener");
 	var penetrate = require("./lib/penetrate");

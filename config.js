@@ -12,6 +12,7 @@ module.exports = {
 			fontColor: "rgb(255, 255, 255)",
 			lifeTime: 240,
 			height: 30
-		}
+		}, 
+		image: false
 	}
 };

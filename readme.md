@@ -51,8 +51,14 @@ danmu-client
             fontColor: "默认颜色",
             lifeTime: 每条弹幕的基本存活时间,
             height: 每条弹幕占据高度
-        }
+        }, 
+        image: 图片弹幕开关
     }
+
+## 图片弹幕
+打开图片弹幕开关后，弹幕内含相关内容的将被解析为图片。图片必须可以正常打开，调用代码如：``[IMG WIDTH=24]danmu-24.png[/IMG]``
+
+格式：``[IMG WIDTH=图片宽度]图片地址（支持HTTP）[/IMG]``
 
 ## 协议
 The MIT License (MIT)
