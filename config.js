@@ -14,5 +14,12 @@ module.exports = {
 			height: 50
 		}, 
 		image: true
+	}, 
+	image: {
+		regex: /\[IMG WIDTH=(\d+)\](.+?)\[\/IMG\]/ig, 
+		whitelist: [
+			"https://www.baidu.com/img/bd_logo1.png", 
+			"http://www.baidu.com/img/bd_logo1.png", 
+		]
 	}
 };
