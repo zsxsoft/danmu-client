@@ -31,10 +31,13 @@
 			isStart = true;
 		}
 
+		if (e.keyCode == 123) { // F12
+			gui.Window.get().showDevTools();
+		}
+
 	}
 
 	document.title = "DANMU Client - Client ID = " + crypto.createHash('md5').update(Math.random().toString()).digest('hex');
 	window.addEventListener("keydown", keydownFunction, true);
 
-	
 })();
