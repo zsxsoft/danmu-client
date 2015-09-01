@@ -25,7 +25,8 @@ module.exports = function(grunt) {
 		jshint: {
 			options: {
 				"-W061": true,
-				"multistr": true
+				"multistr": true, 
+				"esnext": true
 			},
 			src: ['./app.js', './lib/*'],
 		},
