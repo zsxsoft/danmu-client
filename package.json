@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "go": "electron .",
-    "go-lin": "electron . --enable-transparent-visuals --disable-gpu",
+    "go-lin": "electron . --enable-transparent-visuals --disable-gpu"
   },
   "repository": {
     "type": "git",

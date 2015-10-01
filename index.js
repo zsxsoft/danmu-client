@@ -1,5 +1,6 @@
 /* global panelWindow */
 /* global global */
+
 (function () {
     var windows = require('remote').getGlobal('windows');
     var coordinator = require('remote').getGlobal('coordinator');
