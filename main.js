@@ -16,6 +16,18 @@ app.on('window-all-closed', function () {
 
 app.on('ready', function () {
 
+    windows.panelWindow = new BrowserWindow({
+        width: 400,
+        height: 200, 
+        toolbar: false, 
+        icon: __dirname + '/danmu.png'
+    });
+    windows.panelWindow.loadUrl('file://' + __dirname + '/panel.html');
+    windows.panelWindow.on('closed', function () {
+        windows.panelWindow = null;
+    });
+    windows.panelWindow.setMenu(null);
+
     windows.mainWindow = new BrowserWindow({
         transparent: true,
         frame: false,
@@ -31,17 +43,5 @@ app.on('ready', function () {
         app.quit();
     });
     windows.mainWindow.setMenu(null);
-
-    windows.panelWindow = new BrowserWindow({
-        width: 400,
-        height: 200, 
-        toolbar: false, 
-        icon: __dirname + '/danmu.png'
-    });
-    windows.panelWindow.loadUrl('file://' + __dirname + '/panel.html');
-    windows.panelWindow.on('closed', function () {
-        windows.panelWindow = null;
-    });
-    windows.panelWindow.setMenu(null);
 
 });

@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/zsxsoft/danmu-client",
   "dependencies": {
-    "socket.io-client": "^1.3.6",
-    "electron-penetrate": "~0.0.3"
+    "electron-penetrate": "0.0.3",
+    "socket.io-client": "^1.3.6"
   },
   "devDependencies": {
-    "electron-prebuilt": "^0.30.2",
-    "electron-rebuild": "^0.2.5",
+    "electron-prebuilt": "^0.33.3",
+    "electron-rebuild": "^1.0.0",
     "grunt": "~0.4.2",
     "grunt-commands": "^0.1.8",
     "grunt-contrib-copy": "~0.8.0",
