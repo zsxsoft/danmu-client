@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 		pkg: packageJson,
 		nodewebkit: {
 			options: {
-				version: "0.12.1", // https://github.com/mllrsohn/node-webkit-builder/issues/222
+				version: "0.12.3", // https://github.com/mllrsohn/node-webkit-builder/issues/222
 				platforms: platforms,
 				buildDir: buildDir,
 				appName: exeName,
@@ -25,7 +25,8 @@ module.exports = function(grunt) {
 		jshint: {
 			options: {
 				"-W061": true,
-				"multistr": true
+				"multistr": true, 
+				"esnext": true
 			},
 			src: ['./app.js', './lib/*'],
 		},

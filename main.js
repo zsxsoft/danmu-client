@@ -5,20 +5,27 @@ global.coordinator = new(require('events').EventEmitter);
 global.windows = {};
 
 require('crash-reporter').start();
-app.on('window-all-closed', function() {
+app.on('window-all-closed', function () {
     if (process.platform != 'darwin') {
         app.quit();
     }
 });
 
-app.on('ready', function() {
+app.on('ready', function () {
 
-    windows.mainWindow = new BrowserWindow(packageJson.window);
+    windows.mainWindow = new BrowserWindow({
+        "transparent": true,
+        "frame": false,
+        "toolbar": false,
+        "always-on-top": true,
+        "resizable": true,
+        "title": "DANMU Client"
+    });
     windows.mainWindow.loadUrl('file://' + __dirname + '/index.html');
     windows.mainWindow.openDevTools({
-      detach: true
+        detach: true
     });
-    windows.mainWindow.on('closed', function() {
+    windows.mainWindow.on('closed', function () {
         windows.mainWindow = null;
         app.quit();
     });
@@ -28,7 +35,7 @@ app.on('ready', function() {
         height: 200
     });
     windows.panelWindow.loadUrl('file://' + __dirname + '/panel.html');
-    windows.panelWindow.on('closed', function() {
+    windows.panelWindow.on('closed', function () {
         windows.panelWindow = null;
     });
 
