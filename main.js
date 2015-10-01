@@ -9,9 +9,7 @@ coordinator.on('exit', function() {
     app.quit();
 });
 app.on('window-all-closed', function () {
-    if (process.platform != 'darwin') {
-        app.quit();
-    }
+    app.quit();
 });
 
 app.on('ready', function () {
@@ -24,7 +22,7 @@ app.on('ready', function () {
     });
     windows.panelWindow.loadUrl('file://' + __dirname + '/panel.html');
     windows.panelWindow.on('closed', function () {
-        windows.panelWindow = null;
+        app.quit();
     });
     windows.panelWindow.setMenu(null);
 
@@ -39,8 +37,7 @@ app.on('ready', function () {
     });
     windows.mainWindow.loadUrl('file://' + __dirname + '/index.html');
     windows.mainWindow.on('closed', function () {
-        windows.mainWindow = null;
-        app.quit();
+        app.quit();        
     });
     windows.mainWindow.setMenu(null);
 
