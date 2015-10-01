@@ -3,6 +3,7 @@
 (function () {
     var windows = require('remote').getGlobal('windows');
     var coordinator = require('remote').getGlobal('coordinator');
+    var shell = require('shell');
     var config = require("./config");
     var danmu = require("./lib/danmu");
     var listener = require("./lib/listener");
@@ -10,8 +11,9 @@
     var crypto = require('crypto');
     var packageJson = require("./package.json");
     var isStart = false;
+    global.config = config;
 
-    var initFunction = function() {
+    function initFunction() {
         windows.mainWindow.setResizable(false); // Electron doesn't support both resizable and transparency 
         document.getElementById("message").remove();
         document.querySelector(".border").remove();
@@ -22,8 +24,8 @@
         penetrate.init();
         isStart = true;
     }
-    global.config = config;
-    var keydownFunction = function (e) {
+
+    function keydownFunction(e) {
         switch (e.keyCode) {
         case 13:
             if (!isStart) {
@@ -31,11 +33,16 @@
                 isStart = true;
             }
             break;
+        case 116:
+            e.preventDefault();
+        break;
         case 112:
-            gui.Shell.openExternal(packageJson.homepage);
+            shell.openExternal(packageJson.homepage);
             break;
         case 123:
-            gui.Window.get().showDevTools();
+            windows.mainWindow.openDevTools({
+                detach: true
+            });
             break;
         }
     }

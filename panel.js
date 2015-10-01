@@ -4,6 +4,7 @@
 	var windows = require('remote').getGlobal('windows');
 	var coordinator = require('remote').getGlobal('coordinator');
 
+
 	var controlButtons = window.document.querySelectorAll(".btn-control");
 	var countQuitValue = 0;
 	var controlButtonClick = function () {
@@ -21,7 +22,7 @@
 	}, true);
 	document.querySelector("#btn-quit").addEventListener("click", function () {
 		if (countQuitValue == 1) {
-			process.exit();
+			coordinator.emit("exit");
 		} else {
 			setTimeout(function () {
 				document.querySelector("#btn-quit").innerText = "退出程序";
