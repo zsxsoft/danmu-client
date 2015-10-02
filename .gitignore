@@ -1,6 +1,7 @@
 /cache
 /builds
 /typings
+/out
 
 # Logs
 logs

@@ -51,7 +51,7 @@
 		item.addEventListener("click", controlButtonClick);
 	});
 
-	require('windows-title-color').get(function(err, ret) {
+	require('windows-caption-color').get(function(err, ret) {
 		if (!err) {
 			window.document.body.style.background = "rgba(" + ret.reg.r + ", " + ret.reg.g + ", " + ret.reg.b + ", " + ret.reg.a + ")";
 		}

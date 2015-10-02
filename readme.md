@@ -10,29 +10,31 @@ danmu-client
 - 提供紧急清空弹幕池、停止接收弹幕等功能；
 - 支持图片弹幕。
 
+## 兼容性警告
+
+欲编译Windows XP可用版本，请使用master分支下的nwjs版本！
+
 ## 直接启动程序
 
 目前仅有Windows x86版本可用。
 
 1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
-2. 双击目录下的``danmu``，启动成功。
+2. 双击目录下的``danmu-client``，启动成功。
 
 ## 源代码部署说明
 
-1. 下载并安装[Nodejs](https://nodejs.org)，同时需要安装[Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)以便编译C++组件。
+1. 下载并安装[Nodejs](https://nodejs.org)，同时需要安装[Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)和``Python``以便编译C++组件。
 2. 命令行切换到工程目录下，执行``npm install``，等待自动下载和编译组件。（如果不想通过npm下载electron，可以在``package.json``里去掉``electron-prebuilt``）。
-3. 执行``nw``，启动成功。
+3. 执行``electron .``，启动成功。
 
 ## 调试工具打开说明
 
 直接F12即可。
 
-## 发布说明（Windows x86 + x64）
+## 发布说明（Windows  x86 + x64）
 
-1. 下载nw-penetrate的[编译版本](https://github.com/zsxsoft/electron-penetrate/releases/)，分别解压到``cache\node_modules\系统版本（win32或win64）\electron-penetrate\build\Release``目录下。
-2. 下载[rid](https://github.com/ironSource/rename-import-dll)，将其放到环境变量定义之处，或直接拷贝到项目根目录下。
-3. 执行``grunt``。
-4. 用各种PE信息修改工具修改文件属性即可（如Visual Studio）。
+1. 根据``danmu.png``手动生成一个``danmu.ico``；
+2. PowerShell运行``pack.ps1``，完成。
 
 ## 配置说明
 根目录``config.js``下有配置，以下是说明

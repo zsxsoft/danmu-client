@@ -35,7 +35,7 @@
     "openssl_fips": "",
     "openssl_no_asm": 0,
     "python": "C:\\Python27\\python.exe",
-    "target_arch": "x64",
+    "target_arch": "win32",
     "v8_enable_gdbjit": 0,
     "v8_enable_i18n_support": 1,
     "v8_no_strict_aliasing": 1,
@@ -43,8 +43,9 @@
     "v8_random_seed": 0,
     "v8_use_snapshot": 1,
     "want_separate_host_toolset": 0,
-    "nodedir": "C:\\Users\\sx\\.node-gyp\\4.1.1",
+    "nodedir": "C:\\Users\\sx\\.node-gyp\\0.33.3",
     "copy_dev_lib": "true",
-    "standalone_static_library": 1
+    "standalone_static_library": 1,
+    "target": "0.33.3"
   }
 }
