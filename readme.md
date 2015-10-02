@@ -70,7 +70,45 @@ danmu-client
 
 为了保证安全与稳定，图片弹幕有防火墙机制。只有在弹幕程序目录及子目录下存在的图片才可被加载。引用网络图片，必须手动修改``config.js``添加白名单规则。如果被过滤，则程序不会有任何提示，该弹幕也不会被显示。
 
-## 协议
+## 自定义弹幕
+需要在服务器打开相应开关后，才允许使用自定义弹幕功能。自定义弹幕必须返回一个函数（或类），继承自``lib/danmu/sprite.js``中的``Sprite``，并需要实现``updateLifeTime``方法和``draw``方法。
+示例代码如下（生成一个在屏幕上晃来晃去的玩意）：
+```javascript
+var Sprite = require('./lib/danmu/sprite.js');
+var canvasWidth = 0;
+var canvasHeight = 0;
+function Comment(param) {
+    Sprite.call(this, param.x, param.y, param.width, param.height, param.speed);
+    this.text = param.text || ""; //文字内容
+    this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
+    this.color = param.color || config.display.comment.color;
+    this.font = param.font || config.display.comment.fontStyle;
+    this.alive = true; //生命状态
+}
+Comment.prototype = Object.create(Sprite.prototype);
+Comment.prototype.draw = function (canvasContext) {
+    if (canvasWidth == 0) canvasWidth = canvasContext.canvas.width;
+    if (canvasHeight == 0) canvasHeight = canvasContext.canvas.height;
+    canvasContext.fillStyle = "rgb(" + parseInt(Math.random() * 255) + ", " + parseInt(Math.random() * 255) + ", " + parseInt(Math.random() * 255) + ")";
+    canvasContext.font = this.font;
+    canvasContext.fillText(this.text, parseInt(Math.random() * canvasWidth), parseInt(Math.random() * canvasHeight));
+};
+Comment.prototype.updateLifeTime = function () {
+    this.lifeTime--; //每刷新一帧，存活时间-1
+    this.alive = (this.lifeTime >= 0);
+};
+return Comment;
+```
+
+## 通讯协议
+
+此处基于socket.io作为底层协议。具体监听方法为
+``io.on(PROTO_NAME, CALLBACK)``
+
+### init
+    表示接收到
+
+## 开源协议
 The MIT License (MIT)
 
 
