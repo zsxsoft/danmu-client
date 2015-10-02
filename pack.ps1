@@ -2,6 +2,22 @@ $script:arch = $null;
 $script:target = '0.33.3';
 $script:platform = $null;
 
+Function DeleteUselessFiles() {
+    Get-ChildItem ./out | ForEach-Object -Process {
+        if ($_ -is [System.IO.DirectoryInfo]) {
+            Remove-Item -Path ./out/$_/locales -Recurse
+            Remove-Item -Path ./out/$_/resources/default_app -Recurse
+            Remove-Item -Path ./out/$_/pdf.dll
+            Remove-Item -Path ./out/$_/version
+            Remove-Item -Path ./out/$_/LICENSE
+            Remove-Item -Path ./out/$_/xinput1_3.dll
+            Remove-Item -Path ./out/$_/d3dcompiler_47.dll
+            Remove-Item -Path ./out/$_/vccorlib120.dll
+            Copy-Item -Path ./config.js -Destination ./out/$_/
+        }
+    }
+}
+
 Function BuildElectron($platform, $arch) {
     $script:platform = $platform
     $script:arch = $arch
@@ -13,7 +29,7 @@ Function BuildElectron($platform, $arch) {
         --icon=danmu.ico `
         --app-version=1.0.3 `
         --out="./out" `
-        --ignore='nw-' `
+        --ignore="""\.(pdb|exp|lib|map|obj|tlog|vcxproj|gypi|sln|md|log|bin)$|out|node-gyp|nw|nw-.*|.git""" `
         --arch=$script:arch --platform=$script:platform --version=$script:target `
         --version-string.ProductName="DANMU Client" `
         --version-string.CompanyName="zsx (http://www.zsxsoft.com)" `
@@ -34,3 +50,4 @@ Function RebuildModule($module) {
 
 BuildElectron 'win32' 'ia32'
 BuildElectron 'win32' 'x64'
+DeleteUselessFiles
