@@ -5,8 +5,8 @@ $script:platform = $null;
 Function BuildElectron($platform, $arch) {
     $script:platform = $platform
     $script:arch = $arch
-    #RebuildModule 'electron-penetrate'
-    #RebuildModule 'windows-caption-color'
+    RebuildModule 'electron-penetrate'
+    RebuildModule 'windows-caption-color'
     electron-packager ./ danmu-client `
         --asar `
         --overwrite `
@@ -33,4 +33,4 @@ Function RebuildModule($module) {
 }
 
 BuildElectron 'win32' 'ia32'
-#BuildElectron 'win32' 'x64'
+BuildElectron 'win32' 'x64'
