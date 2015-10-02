@@ -4,8 +4,10 @@
 (function () {
     var windows = require('remote').getGlobal('windows');
     var coordinator = require('remote').getGlobal('coordinator');
+    var path = require('path');
+    var fs = require('fs');
     var shell = require('shell');
-    var config = require("./config");
+    var config = eval(fs.readFileSync(path.resolve(__dirname, 'config.js'), "utf-8"));
     var danmu = require("./lib/danmu");
     var listener = require("./lib/listener");
     var penetrate = require("./lib/penetrate");
