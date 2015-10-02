@@ -2,8 +2,8 @@
 (function () {
 
 	
-	var windows = require('remote').getGlobal('windows');
-	var coordinator = require('remote').getGlobal('coordinator');
+	var gui = require('nw.gui');
+	var win = gui.Window.get();
 	var controlButtons = Array.from(window.document.querySelectorAll(".btn-control")); // I think querySelectorAll's api is terrible.
 	var countQuitValue = 0;
 	var isShow = true;
@@ -16,7 +16,7 @@
 		if (!isShow) return;
 		document.title = "FPS: " + fps;
 	});
-
+/*
 	window.addEventListener('beforeunload', function (e) {
 		// Hide but not exit
 		// We cannot call a function that in a unregistered window.
@@ -24,12 +24,10 @@
 		windows.panelWindow.hide();
 		isShow = false;
 	});
-
+*/
 	window.addEventListener("keydown", function (e) {
 		if (e.keyCode == 123) { // F12
-			windows.panelWindow.openDevTools({
-				detach: true
-			});
+			win.showDevTools();
 		}
 	}, true);
 
@@ -57,6 +55,5 @@
 		}
 	});
 
-	
 
 })();
