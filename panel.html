@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<style type="text/css">
-		body {
-			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-			font-size: 1rem;
-			line-height: 1.5;
-			color: #373a3c;
-		}
-		</style>
-		<title>DANMU Panel</title>
-	</head>
-	<body style="">
-		<p>FPS:
-			<span id="txt-fps"></span>
-		</p>
-		<p>
-			<button class="btn btn-success btn-control" data-top="danmuControl" data-param="start">开启弹幕接收</button>
-			<button class="btn btn-success btn-control" data-top="danmuControl" data-param="stop">停止弹幕接收</button>
-			<button class="btn btn-success btn-control" data-top="danmuControl" data-param="clear">清空弹幕池</button>
-		</p>
-		<p>
-			<!--<button class="btn btn-success btn-control" data-top="windowControl" data-param="fps">FPS刷新开关</button>
-			<button class="btn btn-success btn-control" data-top="windowControl" data-param="dev" id="btn-dev">显示控制台</button>-->
-			<button class="btn btn-success btn-control" data-top="windowControl" data-param="quit" id="btn-quit">退出弹幕</button>
-		</p>
-	</body>
-	<script src="panel.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    body {
+        font-family: 'Segoe UI Light', 'Segoe UI', 'Segoe WP', 'Helvetica Neue', '微软雅黑 Light', '微软雅黑', sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #373a3c;
+    }
+    
+    .btn {
+        display: block;
+        display: block;
+        cursor: pointer;
+        -webkit-transition: -webkit-transform .2s;
+        float: left;
+        min-width: 75px;
+        text-align: center;
+        opacity: .75;
+        background-color: #2e8bcc;
+        z-index: 1;
+        margin-right: 2px;
+        color: #fff;
+        height: 70px;
+        width: 70px;
+        font-family: 'Segoe UI Light', 'Segoe UI', 'Segoe WP', 'Helvetica Neue', '微软雅黑 Light', '微软雅黑', sans-serif;
+        border: none;
+    }
+    
+    .btn:hover {
+        opacity: 1;
+    }
+    
+    .center {
+        position: absolute;
+        top: 10%;
+        transform: translate(10%, 10%);
+    }
+    </style>
+    <title>DANMU Panel</title>
+</head>
+
+<body>
+    <div class="center">
+        <button class="btn btn-success btn-control" data-top="danmuControl" data-param="start">接收弹幕</button>
+        <button class="btn btn-success btn-control" data-top="danmuControl" data-param="stop">停收弹幕</button>
+        <button class="btn btn-success btn-control" data-top="danmuControl" data-param="clear">清空弹幕</button>
+        <button class="btn btn-success btn-control" data-top="windowControl" data-param="quit" id="btn-quit">退出弹幕</button>
+    </div>
+</body>
+<script src="panel.js"></script>
 
 </html>

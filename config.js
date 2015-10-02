@@ -1,4 +1,4 @@
-module.exports = {
+({
 	socket: {
 		url: "http://127.0.0.1:3000",
 		password: "123456",
@@ -12,14 +12,14 @@ module.exports = {
 			fontColor: "rgb(255, 255, 255)",
 			lifeTime: 240,
 			height: 50
-		}, 
+		},
 		image: true
-	}, 
+	},
 	image: {
-		regex: /\[IMG WIDTH=(\d+)\](.+?)\[\/IMG\]/ig, 
+		regex: /\[IMG WIDTH=(\d+)\](.+?)\[\/IMG\]/ig,
 		whitelist: [
-			"https://www.baidu.com/img/bd_logo1.png", 
-			"http://www.baidu.com/img/bd_logo1.png", 
+			"https://www.baidu.com/img/bd_logo1.png",
+			"http://www.baidu.com/img/bd_logo1.png",
 		]
 	}
-};
+});
