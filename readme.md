@@ -29,7 +29,7 @@ danmu-client
 
 ## 发布说明（Windows x86 + x64）
 
-1. 下载nw-penetrate的[编译版本](https://github.com/zsxsoft/electron-penetrate/releases/)，分别解压到``cache\node_modules\系统版本（win32或win64）\electron-penetrate\build\Release``目录下。
+1. 下载nw-penetrate的[编译版本](https://github.com/zsxsoft/nw-penetrate/releases/)，分别解压到``cache\node_modules\系统版本（win32或win64）\electron-penetrate\build\Release``目录下。
 2. 下载[rid](https://github.com/ironSource/rename-import-dll)，将其放到环境变量定义之处，或直接拷贝到项目根目录下。
 3. 执行``grunt``。
 4. 用各种PE信息修改工具修改文件属性即可（如Visual Studio）。
