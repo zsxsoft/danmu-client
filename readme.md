@@ -10,28 +10,27 @@ danmu-client
 - 提供紧急清空弹幕池、停止接收弹幕等功能；
 - 支持图片弹幕。
 
+## 警告
+
+此分支为nwjs分支。
+
 ## 直接启动程序
 
-目前仅有Windows x86版本可用。
-
 1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
-2. 双击目录下的``danmu``，启动成功。
+2. 双击目录下的``danmu.exe``，启动成功。
 
 ## 源代码部署说明
 
-1. 下载并安装[Nodejs](https://nodejs.org)，同时需要安装[Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)以便编译C++组件。
-2. 命令行切换到工程目录下，执行``npm install``，等待自动下载和编译组件。（如果不想通过npm下载electron，可以在``package.json``里去掉``electron-prebuilt``）。
+1. 下载并安装[Nodejs](https://nodejs.org)，同时需要安装[Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)和``Python``以便编译C++组件。
+2. 命令行切换到工程目录下，执行``npm install``，等待自动下载和编译组件。（如果不想通过npm下载nwjs，可以在``package.json``里去掉``nw``）。
 3. 执行``nw``，启动成功。
 
-## 调试工具打开说明
-
-直接F12即可。
-
-## 发布说明（Windows x86 + x64）
+## 发布说明（Windows  x86 + x64）
 
 1. 下载[rid](https://github.com/ironSource/rename-import-dll)，将其放到环境变量定义之处，或直接拷贝到项目根目录下。
 2. 执行``grunt``。
 3. 用各种PE信息修改工具修改文件属性即可（如Visual Studio）。
+
 
 ## 配置说明
 根目录``config.js``下有配置，以下是说明
@@ -67,7 +66,37 @@ danmu-client
 
 为了保证安全与稳定，图片弹幕有防火墙机制。只有在弹幕程序目录及子目录下存在的图片才可被加载。引用网络图片，必须手动修改``config.js``添加白名单规则。如果被过滤，则程序不会有任何提示，该弹幕也不会被显示。
 
-## 协议
+## 自定义弹幕
+需要在服务器打开相应开关后，才允许使用自定义弹幕功能。自定义弹幕必须返回一个函数（或类），继承自``lib/danmu/sprite.js``中的``Sprite``，并需要实现``updateLifeTime``方法和``draw``方法，有``alive``属性。
+示例代码如下（生成一个颜色随机、在屏幕上晃来晃去的玩意）：
+```javascript
+var Sprite = require('./lib/danmu/sprite.js');
+var canvasWidth = 0;
+var canvasHeight = 0;
+function Comment(param) {
+    Sprite.call(this, param.x, param.y, param.width, param.height, param.speed);
+    this.text = param.text || ""; //文字内容
+    this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
+    this.font = param.font || config.display.comment.fontStyle;
+    this.alive = true; //生命状态
+}
+Comment.prototype = Object.create(Sprite.prototype);
+Comment.prototype.draw = function (canvasContext) {
+    if (canvasWidth === 0) canvasWidth = canvasContext.canvas.width;
+    if (canvasHeight === 0) canvasHeight = canvasContext.canvas.height;
+    canvasContext.fillStyle = "rgb(" + parseInt(Math.random() * 255) + ", " + parseInt(Math.random() * 255) + ", " + parseInt(Math.random() * 255) + ")";
+    canvasContext.font = this.font;
+    canvasContext.fillText(this.text, parseInt(Math.random() * canvasWidth), parseInt(Math.random() * canvasHeight));
+};
+Comment.prototype.updateLifeTime = function () {
+    this.lifeTime--; //每刷新一帧，存活时间-1
+    this.alive = (this.lifeTime >= 0);
+};
+return Comment;
+```
+
+
+## 开源协议
 The MIT License (MIT)
 
 
