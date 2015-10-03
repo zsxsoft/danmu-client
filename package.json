@@ -3,7 +3,6 @@
   "version": "1.0.3",
   "description": "Danmu client",
   "main": "main.js",
-  "js-flags": "--harmony",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "go": "electron .",
