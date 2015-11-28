@@ -6,10 +6,10 @@ global.windows = {};
 
 require('crash-reporter').start();
 coordinator.on('exit', function() {
-    app.exit();
+    app.exit(0);
 });
 app.on('window-all-closed', function () {
-    app.exit();
+    app.exit(0);
 });
 
 app.on('ready', function () {
@@ -37,7 +37,7 @@ app.on('ready', function () {
     });
     windows.mainWindow.loadURL('file://' + __dirname + '/index.html');
     windows.mainWindow.on('closed', function () {
-        app.exit();
+        coordinator.emit("exit");
     });
     windows.mainWindow.setMenu(null);
 
