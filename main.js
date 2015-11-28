@@ -20,9 +20,9 @@ app.on('ready', function () {
         resizable: false, 
         icon: __dirname + '/danmu.png'
     });
-    windows.panelWindow.loadUrl('file://' + __dirname + '/panel.html');
+    windows.panelWindow.loadURL('file://' + __dirname + '/panel.html');
     windows.panelWindow.on('closed', function () {
-        app.exit();
+        //app.exit();
     });
     windows.panelWindow.setMenu(null);
 
@@ -35,7 +35,7 @@ app.on('ready', function () {
         "always-on-top": true,
         icon: __dirname + '/danmu.png'
     });
-    windows.mainWindow.loadUrl('file://' + __dirname + '/index.html');
+    windows.mainWindow.loadURL('file://' + __dirname + '/index.html');
     windows.mainWindow.on('closed', function () {
         app.exit();
     });
