@@ -1,5 +1,7 @@
 danmu-client
 ==========
+[![Github All Releases](https://img.shields.io/github/downloads/zsxsoft/danmu-client/total.svg)](https://github.com/zsxsoft/danmu-client/releases)
+[![David deps](https://david-dm.org/zsxsoft/danmu-client.svg)](https://david-dm.org/zsxsoft/danmu-client)
 
 这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。
 
