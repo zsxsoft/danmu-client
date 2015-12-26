@@ -2,18 +2,28 @@
 /* global global */
 
 (function () {
+
     var windows = require('remote').getGlobal('windows');
     var coordinator = require('remote').getGlobal('coordinator');
     var path = require('path');
     var fs = require('fs');
     var shell = require('shell');
-    var config = eval(fs.readFileSync(path.resolve('config.js'), "utf-8"));
     var danmu = require("./lib/danmu");
     var listener = require("./lib/listener");
     var penetrate = require("./lib/penetrate");
     var crypto = require('crypto');
     var packageJson = require("./package.json");
     var isStart = false;
+
+    var config = null;
+    try {
+        config = eval(fs.readFileSync(path.resolve('config.js'), "utf-8"));
+    } catch (e) {
+        alert("你的config.js修改有误，解析出错：\n" + e.stack.toString());
+        windows.mainWindow.openDevTools({detach: true});
+        throw e;
+    } 
+
     global.config = config;
 
     function initFunction() {
