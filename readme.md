@@ -30,7 +30,8 @@ danmu-client
 ## 发布说明（Windows  x86 + x64）
 
 1. 根据``danmu.png``手动生成一个``danmu.ico``；
-2. PowerShell运行``pack.ps1``，完成。
+1. ``npm install node-gyp electron-packager -g``
+1. PowerShell运行``pack.ps1``，完成。
 
 ## 配置说明
 根目录``config.js``下有配置，以下是说明
