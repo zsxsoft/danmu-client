@@ -1,5 +1,5 @@
 $script:arch = $null;
-$script:target = '0.33.3';
+$script:target = '0.35.1';
 $script:platform = $null;
 
 Function DeleteUselessFiles() {

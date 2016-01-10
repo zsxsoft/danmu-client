@@ -1,6 +1,7 @@
 /* global panelWindow */
 /* global global */
 (function () {
+
     var gui = require('nw.gui');
     global.coordinator = new(require('events').EventEmitter);
     global.panelWindow = gui.Window.open('panel.html', {
@@ -9,10 +10,10 @@
         width: 390,
         height: 150
     });
+    gui.Window.get().showDevTools();
+
     var path = require('path');
     var fs = require('fs');
-    gui.Window.get().showDevTools();
-    var config = eval(fs.readFileSync(path.resolve('config.js'), "utf-8"));
     var danmu = require("./lib/danmu");
     var listener = require("./lib/listener");
     var penetrate = require("./lib/penetrate");
@@ -20,6 +21,16 @@
     var packageJson = require("./package.json");
 
     var isStart = false;
+
+    var config = null;
+    try {
+        config = eval(fs.readFileSync(path.resolve('config.js'), "utf-8"));
+    } catch (e) {
+        alert("你的config.js修改有误，解析出错：\n" + e.stack.toString());
+        windows.mainWindow.openDevTools({detach: true});
+        throw e;
+    } 
+
     global.config = config;
 
     var keydownFunction = function (e) {
