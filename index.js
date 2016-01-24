@@ -8,6 +8,9 @@
     var path = require('path');
     var fs = require('fs');
     var shell = require('shell');
+                windows.mainWindow.openDevTools({
+                detach: true
+            });
     var danmu = require("./lib/danmu");
     var listener = require("./lib/listener");
     var penetrate = require("./lib/penetrate");
