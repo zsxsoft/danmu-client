@@ -3,13 +3,13 @@ danmu-client
 [![Github All Releases](https://img.shields.io/github/downloads/zsxsoft/danmu-client/total.svg)](https://github.com/zsxsoft/danmu-client/releases)
 [![David deps](https://david-dm.org/zsxsoft/danmu-client.svg)](https://david-dm.org/zsxsoft/danmu-client)
 
-这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。
+这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。屏幕截图见[Release](https://github.com/zsxsoft/danmu-client/releases)。
 
 ## 功能特色
 - 以``WebSocket``作为通讯协议，用``Canvas``作为弹幕的画布；
 - 可在桌面任何位置显示弹幕，可与其他程序共同工作；
 - 窗口置于最前，完全透明可穿透，用户可用键鼠等与其他程序正常交互；
-- 提供紧急清空弹幕池、停止接收弹幕等功能；
+- 提供紧急清空弹幕池、停止接收弹幕等功能，可删除单条弹幕；
 - 支持图片弹幕。
 
 ## 兼容性警告
@@ -71,15 +71,14 @@ danmu-client
 需要在服务器打开相应开关后，才允许使用自定义弹幕功能。自定义弹幕必须返回一个函数（或类），继承自``lib/danmu/sprite.js``中的``Sprite``，并需要实现``updateLifeTime``方法和``draw``方法，有``alive``属性。
 示例代码如下（生成一个颜色随机、在屏幕上晃来晃去的玩意）：
 ```javascript
-var Sprite = require('./lib/danmu/sprite.js');
+var Sprite = require('./lib/danmu/sprite');
 var canvasWidth = 0;
 var canvasHeight = 0;
 function Comment(param) {
-    Sprite.call(this, param.x, param.y, param.width, param.height, param.speed);
+    Sprite.call(this, param.id, param.x, param.y, param.width, param.height, param.speed, param.lifeTime);
     this.text = param.text || ""; //文字内容
     this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
     this.font = param.font || config.display.comment.fontStyle;
-    this.alive = true; //生命状态
 }
 Comment.prototype = Object.create(Sprite.prototype);
 Comment.prototype.draw = function (canvasContext) {
