@@ -1,24 +1,26 @@
 /* global panelWindow */
 /* global global */
-
+'use strict';
 (function () {
 
-    var windows = require('remote').getGlobal('windows');
-    var coordinator = require('remote').getGlobal('coordinator');
-    var path = require('path');
-    var fs = require('fs');
-    var shell = require('shell');
-                windows.mainWindow.openDevTools({
-                detach: true
-            });
-    var danmu = require("./lib/danmu");
-    var listener = require("./lib/listener");
-    var penetrate = require("./lib/penetrate");
-    var crypto = require('crypto');
-    var packageJson = require("./package.json");
-    var isStart = false;
+    let windows = require('remote').getGlobal('windows');
+    let coordinator = require('remote').getGlobal('coordinator');
+    let path = require('path');
+    let fs = require('fs');
+    let shell = require('shell');
+    
+      windows.mainWindow.openDevTools({
+          detach: true
+      });
+    
+    let danmu = require("./lib/danmu");
+    let listener = require("./lib/listener");
+    let penetrate = require("./lib/penetrate");
+    let crypto = require('crypto');
+    let packageJson = require("./package.json");
+    let isStart = false;
 
-    var config = null;
+    let config = null;
     try {
         config = eval(fs.readFileSync(path.resolve('config.js'), "utf-8"));
     } catch (e) {
@@ -57,7 +59,7 @@
             break;
         case 123:
             windows.mainWindow.openDevTools({
-                detach: true
+                detach: true, 
             });
             break;
         }
