@@ -77,6 +77,39 @@ electron分支不支持Windows XP。欲支持Windows XP，请切换到master分�
 ## 自定义弹幕
 需要在服务器打开相应开关后，才允许使用自定义弹幕功能。自定义弹幕必须返回一个函数（或类），继承自``lib/danmu/sprite.js``中的``Sprite``，并需要实现``updateLifeTime``方法和``draw``方法，有``alive``属性。
 示例代码如下（生成一个颜色随机、在屏幕上晃来晃去的玩意）：
+
+### 最新版示例代码 
+```javascript
+return (() => {
+    'use strict';
+    let Sprite = require('./lib/danmu/sprite');
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    class Comment extends Sprite {
+        constructor(param) {
+            super(param.id, param.x, param.y, param.width, param.height, param.speed, param.lifeTime);
+            this.text = param.text || ""; //文字内容
+            this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
+            this.font = param.font || config.display.comment.fontStyle;
+        }
+        draw(canvasContext) {
+            if (canvasWidth === 0) canvasWidth = canvasContext.canvas.width;
+            if (canvasHeight === 0) canvasHeight = canvasContext.canvas.height;
+            canvasContext.fillStyle = `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`;
+            canvasContext.font = this.font;
+            canvasContext.fillText(this.text, parseInt(Math.random() * canvasWidth), parseInt(Math.random() * canvasHeight));
+        }
+        updateLifeTime() {
+            this.lifeTime--; //每刷新一帧，存活时间-1
+            this.alive = (this.lifeTime >= 0);
+        };
+    }
+    return Comment;
+})();
+
+```
+
+### 旧版本示例代码
 ```javascript
 var Sprite = require('./lib/danmu/sprite');
 var canvasWidth = 0;
