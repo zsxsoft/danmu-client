@@ -7,6 +7,8 @@ danmu-client
 
 如果你喜欢，请点个Star；欢迎Pull Request :)
 
+**欲使用此项目，服务端需要使用对应的版本。已发布的客户端均已写明对应的服务端版本号，开发分支内的客户端版本仅对应开发分支的服务端。**
+
 ## 功能特色
 - 以``WebSocket``作为通讯协议，用``Canvas``作为弹幕的画布；
 - 可在桌面任何位置显示弹幕，可与其他程序（如PowerPoint、视频播放器等）共同工作；
@@ -22,6 +24,7 @@ danmu-client
 ## 兼容性警告
 
 electron分支不支持Windows XP。欲支持Windows XP，请切换到master分支。
+
 
 ## 直接启动程序
 
