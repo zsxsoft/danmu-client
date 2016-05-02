@@ -1,5 +1,5 @@
 $script:arch = $null;
-$script:target = '0.35.1';
+$script:target = '0.37.8';
 $script:platform = $null;
 
 Function DeleteUselessFiles() {
@@ -27,14 +27,14 @@ Function BuildElectron($platform, $arch) {
         --asar `
         --overwrite `
         --icon=danmu.ico `
-        --app-version=1.0.3 `
+        --app-version=1.0.6 `
         --out="./out" `
         --ignore="""\.(pdb|exp|lib|map|obj|tlog|vcxproj|gypi|sln|md|log|bin)$|out|node-gyp|nw|nw-.*|.git""" `
         --arch=$script:arch --platform=$script:platform --version=$script:target `
         --version-string.ProductName="DANMU Client" `
         --version-string.CompanyName="zsx (http://www.zsxsoft.com)" `
         --version-string.OriginalFilename="danmu-client.exe" `
-        --version-string.FileVersion="1.0.3" `
+        --version-string.FileVersion="1.0.6" `
         --version-string.InternalName="DANMU Client" `
         --version-string.FileDescription="DANMU" `
         --version-string.LegalCopyright="https://github.com/zsxsoft/danmu-client/" 
