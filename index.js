@@ -1,8 +1,10 @@
 /* global panelWindow */
 /* global global */
+'use strict';
 (function () {
 
-    var gui = require('nw.gui');
+    let gui = require('nw.gui');
+    let windows = require('remote').getGlobal('windows');
     global.coordinator = new(require('events').EventEmitter);
     global.panelWindow = gui.Window.open('panel.html', {
         toolbar: false,
@@ -11,29 +13,31 @@
         height: 150
     });
     gui.Window.get().showDevTools();
+    let path = require('path');
+    let fs = require('fs');
+    let shell = require('shell');
+    
+    
+    let danmu = require("./lib/danmu");
+    let listener = require("./lib/listener");
+    let penetrate = require("./lib/penetrate");
+    let crypto = require('crypto');
+    let packageJson = require("./package.json");
 
-    var path = require('path');
-    var fs = require('fs');
-    var danmu = require("./lib/danmu");
-    var listener = require("./lib/listener");
-    var penetrate = require("./lib/penetrate");
-    var crypto = require('crypto');
-    var packageJson = require("./package.json");
+    let isStart = false;
 
-    var isStart = false;
-
-    var config = null;
+    let config = null;
     try {
         config = eval(fs.readFileSync(path.resolve('config.js'), "utf-8"));
     } catch (e) {
         alert("你的config.js修改有误，解析出错：\n" + e.stack.toString());
-        windows.mainWindow.openDevTools({detach: true});
+        gui.Window.get().showDevTools();
         throw e;
     } 
 
     global.config = config;
 
-    var keydownFunction = function (e) {
+    let keydownFunction = function (e) {
         switch (e.keyCode) {
         case 13:
             if (!isStart) {
@@ -53,7 +57,7 @@
             break;
         case 123:
             gui.Window.get().showDevTools();
-            break;
+        break;
         }
     }
 

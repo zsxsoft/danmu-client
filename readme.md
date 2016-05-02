@@ -1,16 +1,26 @@
 danmu-client
 ==========
 
-这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。
+这是一个独立的弹幕客户端，其服务端项目见[danmu-server](https://github.com/zsxsoft/danmu-server)。屏幕截图见[Release](https://github.com/zsxsoft/danmu-client/releases)。
+
+如果你喜欢，请点个Star；欢迎Pull Request :)
+
+**欲使用此项目，服务端需要使用对应的版本。[已发布的客户端]((https://github.com/zsxsoft/danmu-client/releases)均已写明对应的服务端版本号，开发分支内的客户端版本仅对应开发分支的服务端。**
 
 ## 功能特色
 - 以``WebSocket``作为通讯协议，用``Canvas``作为弹幕的画布；
-- 可在桌面任何位置显示弹幕，可与其他程序共同工作；
-- 窗口置于最前，完全透明可穿透，用户可用键鼠等与其他程序正常交互；
-- 提供紧急清空弹幕池、停止接收弹幕等功能；
+- 可在桌面任何位置显示弹幕，可与其他程序（如PowerPoint、视频播放器等）共同工作；
+- 窗口置于最前，完全透明可穿透，能与其他程序正常交互；
+- 提供紧急清空弹幕池、停止接收弹幕等功能，可删除单条弹幕；
 - 支持图片弹幕。
 
+### 适用场景
+- 数十人至千人集会（如学校活动、电影放映会）的实时互动
+- 大型活动实时公告信息显示
+- 欲在桌面显示实时吐槽
+
 ## 警告
+
 
 此分支为nwjs分支。
 
@@ -69,16 +79,48 @@ danmu-client
 ## 自定义弹幕
 需要在服务器打开相应开关后，才允许使用自定义弹幕功能。自定义弹幕必须返回一个函数（或类），继承自``lib/danmu/sprite.js``中的``Sprite``，并需要实现``updateLifeTime``方法和``draw``方法，有``alive``属性。
 示例代码如下（生成一个颜色随机、在屏幕上晃来晃去的玩意）：
+
+### 最新版示例代码 
 ```javascript
-var Sprite = require('./lib/danmu/sprite.js');
+return (() => {
+    'use strict';
+    let Sprite = require('./lib/danmu/sprite');
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    class Comment extends Sprite {
+        constructor(param) {
+            super(param.id, param.x, param.y, param.width, param.height, param.speed, param.lifeTime);
+            this.text = param.text || ""; //文字内容
+            this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
+            this.font = param.font || config.display.comment.fontStyle;
+        }
+        draw(canvasContext) {
+            if (canvasWidth === 0) canvasWidth = canvasContext.canvas.width;
+            if (canvasHeight === 0) canvasHeight = canvasContext.canvas.height;
+            canvasContext.fillStyle = `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`;
+            canvasContext.font = this.font;
+            canvasContext.fillText(this.text, parseInt(Math.random() * canvasWidth), parseInt(Math.random() * canvasHeight));
+        }
+        updateLifeTime() {
+            this.lifeTime--; //每刷新一帧，存活时间-1
+            this.alive = (this.lifeTime >= 0);
+        };
+    }
+    return Comment;
+})();
+
+```
+
+### 旧版本示例代码
+```javascript
+var Sprite = require('./lib/danmu/sprite');
 var canvasWidth = 0;
 var canvasHeight = 0;
 function Comment(param) {
-    Sprite.call(this, param.x, param.y, param.width, param.height, param.speed);
+    Sprite.call(this, param.id, param.x, param.y, param.width, param.height, param.speed, param.lifeTime);
     this.text = param.text || ""; //文字内容
     this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
     this.font = param.font || config.display.comment.fontStyle;
-    this.alive = true; //生命状态
 }
 Comment.prototype = Object.create(Sprite.prototype);
 Comment.prototype.draw = function (canvasContext) {
