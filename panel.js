@@ -1,23 +1,23 @@
 /// <reference path="typings/node/node.d.ts"/>
 (function () {
 
-	
-	var windows = require('remote').getGlobal('windows');
-	var coordinator = require('remote').getGlobal('coordinator');
-	var controlButtons = Array.from(window.document.querySelectorAll(".btn-control")); // I think querySelectorAll's api is terrible.
-	var countQuitValue = 0;
-	var isShow = true;
+    const electron = require('electron');
+    const windows = electron.remote.getGlobal('windows');
+    const coordinator = electron.remote.getGlobal('coordinator');
+	let controlButtons = Array.from(window.document.querySelectorAll(".btn-control")); // I think querySelectorAll's api is terrible.
+	let countQuitValue = 0;
+	let isShow = true;
 
 	function controlButtonClick() {
 		coordinator.emit(this.getAttribute("data-top"), this.getAttribute("data-param"));
 	}
 
-	coordinator.on("fps", function (fps) {
+	coordinator.on("fps", fps => {
 		if (!isShow) return;
 		document.title = "FPS: " + fps;
 	});
 
-	window.addEventListener('beforeunload', function (e) {
+	window.addEventListener('beforeunload', e => {
 		// Hide but not exit
 		// We cannot call a function that in a unregistered window.
 		e.returnValue = 'false';
@@ -25,19 +25,19 @@
 		isShow = false;
 	});
 
-	window.addEventListener("keydown", function (e) {
-		if (e.keyCode == 123) { // F12
-			windows.panelWindow.openDevTools({
-				detach: true
+	window.addEventListener("keydown", e => {
+		if (e.keyCode === 123) { // F12
+			windows.panelWindow.webContents.openDevTools({
+				detach: true, 
 			});
 		}
 	}, true);
 
-	document.querySelector("#btn-quit").addEventListener("click", function () {
-		if (countQuitValue == 1) {
+	document.querySelector("#btn-quit").addEventListener("click", () => {
+		if (countQuitValue === 1) {
 			coordinator.emit("exit");
 		} else {
-			setTimeout(function () {
+			setTimeout(() => {
 				document.querySelector("#btn-quit").innerText = "退出程序";
 				countQuitValue = 0;
 			}, 5000);
@@ -47,11 +47,11 @@
 		return false;
 	});
 
-	controlButtons.forEach(function(item) {
+	controlButtons.forEach(item => {
 		item.addEventListener("click", controlButtonClick);
 	});
 
-	require('windows-caption-color').get(function(err, ret) {
+	require('windows-caption-color').get((err, ret) => {
 		if (!err) {
 			window.document.body.style.background = "rgba(" + ret.reg.r + ", " + ret.reg.g + ", " + ret.reg.b + ", " + ret.reg.a + ")";
 		}

@@ -1,23 +1,17 @@
-/* global panelWindow */
-/* global global */
 'use strict';
-(function () {
+(() => {
 
-    let windows = require('remote').getGlobal('windows');
-    let coordinator = require('remote').getGlobal('coordinator');
-    let path = require('path');
-    let fs = require('fs');
-    let shell = require('shell');
-    
-      windows.mainWindow.openDevTools({
-          detach: true
-      });
-    
-    let danmu = require("./lib/danmu");
-    let listener = require("./lib/listener");
-    let penetrate = require("./lib/penetrate");
-    let crypto = require('crypto');
-    let packageJson = require("./package.json");
+    const electron = require('electron');
+    const windows = electron.remote.getGlobal('windows');
+    const coordinator = electron.remote.getGlobal('coordinator');
+    const {shell} = electron;
+    const path = require('path');
+    const fs = require('fs');
+    const danmu = require("./lib/danmu");
+    const listener = require("./lib/listener");
+    const penetrate = require("./lib/penetrate");
+    const crypto = require('crypto');
+    const packageJson = require("./package.json");
     let isStart = false;
 
     let config = null;
@@ -58,9 +52,7 @@
             shell.openExternal(packageJson.homepage);
             break;
         case 123:
-            windows.mainWindow.openDevTools({
-                detach: true, 
-            });
+            windows.mainWindow.webContents.openDevTools({detach: true});
             break;
         }
     }

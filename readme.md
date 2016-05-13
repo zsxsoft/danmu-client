@@ -21,12 +21,11 @@ danmu-client
 - 大型活动实时公告信息显示
 - 欲在桌面显示实时吐槽
 
-## 兼容性警告
+## 系统要求
 
-electron分支不支持Windows XP。欲支持Windows XP，请切换到master分支。
+1. Windows 7 / OS X 10.8 / Linux
 
-
-## 直接启动程序
+## 直接启动程序（Windows  x86 / x64）
 
 1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
 2. 双击目录下的``danmu-client.exe``，启动成功。

@@ -28,7 +28,7 @@
     "windows-caption-color": "0.0.6"
   },
   "devDependencies": {
-    "electron-prebuilt": "^0.35.1",
+    "electron-prebuilt": "^1.0.2",
     "electron-rebuild": "^1.0.2",
     "node-gyp": "^3.2.0"
   }
