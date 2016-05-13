@@ -6,13 +6,13 @@ Function DeleteUselessFiles() {
     Get-ChildItem ./out | ForEach-Object -Process {
         if ($_ -is [System.IO.DirectoryInfo]) {
             Remove-Item -Path ./out/$_/locales -Recurse
-            Remove-Item -Path ./out/$_/resources/default_app -Recurse
-            Remove-Item -Path ./out/$_/pdf.dll
+            Remove-Item -Path ./out/$_/resources/default_app.asar
+#            Remove-Item -Path ./out/$_/pdf.dll
             Remove-Item -Path ./out/$_/version
             Remove-Item -Path ./out/$_/LICENSE
-            Remove-Item -Path ./out/$_/xinput1_3.dll
-            Remove-Item -Path ./out/$_/d3dcompiler_47.dll
-            Remove-Item -Path ./out/$_/vccorlib120.dll
+#            Remove-Item -Path ./out/$_/xinput1_3.dll
+#            Remove-Item -Path ./out/$_/d3dcompiler_47.dll
+#            Remove-Item -Path ./out/$_/vccorlib120.dll
             Copy-Item -Path ./config.js -Destination ./out/$_/
         }
     }
