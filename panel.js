@@ -9,10 +9,10 @@
 	var isShow = true;
 
 	function controlButtonClick() {
-		coordinator.emit(this.getAttribute("data-top"), this.getAttribute("data-param"));
+		global.coordinator.emit(this.getAttribute("data-top"), this.getAttribute("data-param"));
 	}
 
-	coordinator.on("fps", function (fps) {
+	global.coordinator.on("fps", function (fps) {
 		if (!isShow) return;
 		document.title = "FPS: " + fps;
 	});
@@ -33,7 +33,7 @@
 
 	document.querySelector("#btn-quit").addEventListener("click", function () {
 		if (countQuitValue == 1) {
-			coordinator.emit("exit");
+			global.coordinator.emit("exit");
 		} else {
 			setTimeout(function () {
 				document.querySelector("#btn-quit").innerText = "退出程序";

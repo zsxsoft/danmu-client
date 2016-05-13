@@ -4,10 +4,8 @@
 (function () {
 
     let gui = require('nw.gui');
-    let windows = require('remote').getGlobal('windows');
     global.coordinator = new(require('events').EventEmitter);
     global.panelWindow = gui.Window.open('panel.html', {
-        toolbar: false,
         resizable: false,
         width: 390,
         height: 150
@@ -15,7 +13,6 @@
     gui.Window.get().showDevTools();
     let path = require('path');
     let fs = require('fs');
-    let shell = require('shell');
     
     
     let danmu = require("./lib/danmu");
