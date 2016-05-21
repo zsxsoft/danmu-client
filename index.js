@@ -3,7 +3,7 @@
 
     const electron = require('electron');
     const windows = electron.remote.getGlobal('windows');
-    const coordinator = electron.remote.getGlobal('coordinator');
+//    const coordinator = electron.remote.getGlobal('coordinator');
     const {shell} = electron;
     const path = require('path');
     const fs = require('fs');

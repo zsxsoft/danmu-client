@@ -1,5 +1,4 @@
 const electron = require('electron');
-const packageJson = require('./package.json');
 const {app, BrowserWindow} = electron;
 global.coordinator = new(require('events').EventEmitter);
 global.windows = {};

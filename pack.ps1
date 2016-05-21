@@ -43,7 +43,7 @@ Function BuildElectron($platform, $arch) {
 Function RebuildModule($module) {
     Write-Host 'Building' $module 
     cd node_modules/$module
-    node-gyp rebuild --arch=$script:arch --platform=$script:platform --target=$script:target --dist-url=https://atom.io/download/atom-shell
+    node-gyp rebuild --arch=$script:arch --platform=$script:platform --target=$script:target --dist-url=https://atom.io/download/atom-shell --msvs_version=2015
     cd ../../
     Write-Host $module "successful built!"
 }
