@@ -1,12 +1,12 @@
 $script:arch = $null;
-$script:target = '1.0.2';
+$script:target = '1.3.2';
 $script:platform = $null;
 
 Function DeleteUselessFiles() {
     Get-ChildItem ./out | ForEach-Object -Process {
         if ($_ -is [System.IO.DirectoryInfo]) {
             Remove-Item -Path ./out/$_/locales -Recurse
-            Remove-Item -Path ./out/$_/resources/default_app.asar
+#            Remove-Item -Path ./out/$_/resources/default_app.asar
 #            Remove-Item -Path ./out/$_/pdf.dll
             Remove-Item -Path ./out/$_/version
             Remove-Item -Path ./out/$_/LICENSE
@@ -27,14 +27,14 @@ Function BuildElectron($platform, $arch) {
         --asar `
         --overwrite `
         --icon=danmu.ico `
-        --app-version=1.0.6 `
+        --app-version=1.0.7 `
         --out="./out" `
         --ignore="""\.(pdb|exp|lib|map|obj|tlog|vcxproj|gypi|sln|md|log|bin)$|out|node-gyp|nw|nw-.*|.git""" `
         --arch=$script:arch --platform=$script:platform --version=$script:target `
         --version-string.ProductName="DANMU Client" `
         --version-string.CompanyName="zsx (http://www.zsxsoft.com)" `
         --version-string.OriginalFilename="danmu-client.exe" `
-        --version-string.FileVersion="1.0.6" `
+        --version-string.FileVersion="1.0.7" `
         --version-string.InternalName="DANMU Client" `
         --version-string.FileDescription="DANMU" `
         --version-string.LegalCopyright="https://github.com/zsxsoft/danmu-client/" 

@@ -23,7 +23,7 @@ danmu-client
 
 ## 系统要求
 
-1. Windows 7 / OS X 10.8 / Linux
+1. Windows 7+ / OS X 10.8 / Linux(?)
 
 ## 直接启动程序（Windows  x86 / x64）
 
