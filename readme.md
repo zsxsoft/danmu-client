@@ -23,24 +23,38 @@ danmu-client
 
 ## 系统要求
 
-1. Windows 7+ / OS X 10.8 / Linux(?)
+1. Windows 7+ / OS X 10.8+ / Linux(?)
 
-## 直接启动程序（Windows  x86 / x64）
+## 使用预编译版本
+
+### Windows
 
 1. 打开[Release](https://github.com/zsxsoft/danmu-client/releases)下载已经编译好的程序包并解压到某目录。
 2. 双击目录下的``danmu-client.exe``，启动成功。
 
+### Linux / macOS
+
+TODO...
+
+
 ## 源代码部署说明
 
-1. 下载并安装[Nodejs](https://nodejs.org)，同时需要安装[Visual Studio](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)和``Python``以便编译C++组件。
-2. 命令行切换到工程目录下，执行``npm install``，等待自动下载和编译组件。（如果不想通过npm下载electron，可以在``package.json``里去掉``electron-prebuilt``）。
-3. 执行``electron .``，启动成功。
 
-## 发布说明（Windows  x86 + x64）
+1. 下载并安装[Nodejs](https://nodejs.org)，并检查[node-gyp](https://github.com/nodejs/node-gyp)的依赖环境。
+2. ``npm install``
+3. ``electron .``
+
+## 发布说明
+
+### Windows
 
 1. 根据``danmu.png``手动生成一个``danmu.ico``；
 1. ``npm install node-gyp electron-packager -g``
 1. PowerShell运行``pack.ps1``，完成。
+
+### Linux / macOS
+
+TODO...
 
 ## 配置说明
 根目录``config.js``下有配置，以下是说明
