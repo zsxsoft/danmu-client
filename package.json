@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/zsxsoft/danmu-client",
   "dependencies": {
-    "electron-penetrate": "0.0.3",
     "socket.io-client": "^1.4.8",
     "windows-caption-color": "0.0.6"
   },

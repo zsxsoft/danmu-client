@@ -9,7 +9,7 @@
     const fs = require('fs');
     const danmu = require("./lib/danmu");
     const listener = require("./lib/listener");
-    const penetrate = require("./lib/penetrate");
+
     const crypto = require('crypto');
     const packageJson = require("./package.json");
     let isStart = false;
@@ -27,13 +27,15 @@
 
     function initFunction() {
         windows.mainWindow.setResizable(false); // Electron doesn't support both resizable and transparency 
+        windows.mainWindow.setIgnoreMouseEvents(true);
+
         document.getElementById("message").remove();
         document.querySelector(".border").remove();
         document.querySelector("body").style.background = "transparent";
 
         listener.init(config);
         danmu.init(config, listener, document.getElementById("main-canvas"));
-        penetrate.init();
+
         isStart = true;
     }
 
