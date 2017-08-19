@@ -42,19 +42,11 @@ TODO...
 
 1. 下载并安装[Nodejs](https://nodejs.org)，并检查[node-gyp](https://github.com/nodejs/node-gyp)的依赖环境。
 2. ``npm install``
-3. ``electron .``
+3. ``npm start``
 
 ## 发布说明
 
-### Windows
-
-1. 根据``danmu.png``手动生成一个``danmu.ico``；
-1. ``npm install node-gyp electron-packager -g``
-1. PowerShell运行``pack.ps1``，完成。
-
-### Linux / macOS
-
-TODO...
+``npm run build``
 
 ## 配置说明
 根目录``config.js``下有配置，以下是说明
@@ -98,9 +90,9 @@ TODO...
 ```javascript
 return (() => {
     'use strict';
-    let Sprite = require('./lib/danmu/sprite');
-    let canvasWidth = 0;
-    let canvasHeight = 0;
+    const Sprite = require('./lib/danmu/sprite');
+    const canvasWidth = 0;
+    const canvasHeight = 0;
     class Comment extends Sprite {
         constructor(param) {
             super(param.id, param.x, param.y, param.width, param.height, param.speed, param.lifeTime);
@@ -123,32 +115,6 @@ return (() => {
     return Comment;
 })();
 
-```
-
-### 旧版本示例代码
-```javascript
-var Sprite = require('./lib/danmu/sprite');
-var canvasWidth = 0;
-var canvasHeight = 0;
-function Comment(param) {
-    Sprite.call(this, param.id, param.x, param.y, param.width, param.height, param.speed, param.lifeTime);
-    this.text = param.text || ""; //文字内容
-    this.lifeTime = param.lifeTime || config.display.comment.lifeTime;
-    this.font = param.font || config.display.comment.fontStyle;
-}
-Comment.prototype = Object.create(Sprite.prototype);
-Comment.prototype.draw = function (canvasContext) {
-    if (canvasWidth === 0) canvasWidth = canvasContext.canvas.width;
-    if (canvasHeight === 0) canvasHeight = canvasContext.canvas.height;
-    canvasContext.fillStyle = "rgb(" + parseInt(Math.random() * 255) + ", " + parseInt(Math.random() * 255) + ", " + parseInt(Math.random() * 255) + ")";
-    canvasContext.font = this.font;
-    canvasContext.fillText(this.text, parseInt(Math.random() * canvasWidth), parseInt(Math.random() * canvasHeight));
-};
-Comment.prototype.updateLifeTime = function () {
-    this.lifeTime--; //每刷新一帧，存活时间-1
-    this.alive = (this.lifeTime >= 0);
-};
-return Comment;
 ```
 
 

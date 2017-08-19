@@ -2,6 +2,7 @@
 /builds
 /typings
 /out
+/dist
 
 # Logs
 logs

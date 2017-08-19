@@ -6,7 +6,38 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "start-lin": "electron . --enable-transparent-visuals --disable-gpu"
+    "start-lin": "electron . --enable-transparent-visuals --disable-gpu",
+    "build": "electron-builder"
+  },
+  "build": {
+    "productName": "danmu-client",
+    "appId": "com.zsxsoft.danmu.client",
+    "compression": "maximum",
+    "files": [
+      "lib/**/*",
+      "index.html",
+      "index.js",
+      "main.js",
+      "panel.html",
+      "panel.js",
+      "package.json"
+    ],
+    "extraFiles": [
+      "config.js"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": ["zip"]
+    },
+    "win": {
+      "target": ["7z"]
+    },
+    "linux": {
+      "target": ["zip"]
+    },
+    "directories": {
+      "buildResources": "resources"
+    }
   },
   "repository": {
     "type": "git",
@@ -29,7 +60,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "electron": "^1.7.5",
-    "electron-rebuild": "^1.6.0",
+    "electron-builder": "^19.22.1",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
