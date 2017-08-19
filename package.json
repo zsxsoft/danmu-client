@@ -23,12 +23,12 @@
   },
   "homepage": "https://github.com/zsxsoft/danmu-client",
   "dependencies": {
-    "socket.io-client": "^1.7.3",
+    "socket.io-client": "^2.0.3",
     "windows-caption-color": "0.0.6"
   },
   "devDependencies": {
-    "electron": "^1.6.6",
-    "electron-rebuild": "^1.5.7",
-    "node-gyp": "^3.6.1"
+    "electron": "^1.7.5",
+    "electron-rebuild": "^1.6.0",
+    "node-gyp": "^3.6.2"
   }
 }
