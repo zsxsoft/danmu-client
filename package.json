@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "start-lin": "electron . --enable-transparent-visuals --disable-gpu",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "release": "build"
   },
   "build": {
     "productName": "danmu-client",
