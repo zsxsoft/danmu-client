@@ -19,13 +19,19 @@
     ],
     "mac": {
       "category": "public.app-category.utilities",
-      "target": ["zip"]
+      "target": [
+        "zip"
+      ]
     },
     "win": {
-      "target": ["7z"]
+      "target": [
+        "7z"
+      ]
     },
     "linux": {
-      "target": ["zip"]
+      "target": [
+        "zip"
+      ]
     },
     "directories": {
       "buildResources": "resources"
@@ -50,6 +56,7 @@
     "windows-caption-color": "0.0.6"
   },
   "devDependencies": {
+    "7zip-bin": "^2.2.3",
     "babel-eslint": "^7.2.3",
     "electron": "^1.7.5",
     "electron-builder": "^19.22.1",
