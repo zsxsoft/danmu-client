@@ -1,12 +1,12 @@
 {
   "name": "danmu-client",
-  "version": "1.0.7",
+  "version": "1.1.0-dev",
   "description": "Danmu client",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go": "electron .",
-    "go-lin": "electron . --enable-transparent-visuals --disable-gpu"
+    "start": "electron .",
+    "start-lin": "electron . --enable-transparent-visuals --disable-gpu"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,15 @@
     "windows-caption-color": "0.0.6"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "electron": "^1.7.5",
     "electron-rebuild": "^1.6.0",
+    "eslint": "^4.5.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "node-gyp": "^3.6.2"
   }
 }
