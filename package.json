@@ -2,7 +2,7 @@
   "name": "danmu-client",
   "version": "1.1.0-dev",
   "description": "Danmu client",
-  "main": "main.js",
+  "main": "app/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
@@ -14,15 +14,6 @@
     "productName": "danmu-client",
     "appId": "com.zsxsoft.danmu.client",
     "compression": "maximum",
-    "files": [
-      "lib/**/*",
-      "index.html",
-      "index.js",
-      "main.js",
-      "panel.html",
-      "panel.js",
-      "package.json"
-    ],
     "extraFiles": [
       "config.js"
     ],

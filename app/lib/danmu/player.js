@@ -26,7 +26,7 @@ function checkUrlValidate (content) {
       return (config.image.whitelist.indexOf(unbelieveUrl) >= 0)
     }
     let safePath = path.join('/', unbelieveUrl)
-    let filePath = path.resolve('./', '.' + safePath)
+    let filePath = path.resolve('./' + safePath)
     let unsafePath = path.resolve(unbelieveUrl)
     if (filePath !== unsafePath) {
       return false // 文件在上级目录或其他目录，判定为非法
