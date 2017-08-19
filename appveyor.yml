@@ -1,0 +1,29 @@
+environment:
+  nodejs_version: "8"
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+
+test_script:
+  - node --version
+  - npm --version
+
+build_script:
+  - npm run build
+
+deploy:
+  release: danmu-client-v$(appveyor_build_version)
+  description: 'DANMU Client'
+  provider: GitHub
+  auth_token:
+    secure: mWwoNrP+t5ZUbo4v3eyGUUsBkof1/9ajtiM01CwmUvGar3ycpT8EPVXpDooIm8BQ
+  artifact: /dist\\.*\.7z/            # upload all NuGet packages to release assets
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
+
+shallow_clone: true
+clone_depth: 1

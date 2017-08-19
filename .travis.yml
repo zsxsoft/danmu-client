@@ -1,0 +1,30 @@
+osx_image: xcode8.3
+sudo: required
+dist: trusty
+language: node_js
+node_js: '8'
+env:
+  global:
+  - ELECTRON_CACHE=$HOME/.cache/electron
+  - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+matrix:
+  include:
+  - os: osx
+  - os: linux
+cache:
+  directories:
+  - node_modules
+  - "$HOME/.cache/electron"
+  - "$HOME/.cache/electron-builder"
+  - "$HOME/.npm/_prebuilds"
+script:
+- npm run build
+deploy:
+  provider: releases
+  api_key:
+    secure: aFs/7St0u2c9IMR3MHPl1hyijduEtd+HWvVSIhMnYJSv4lVUXW0Fm00zJvBVxXacOQdWSRojEVGbrjWOrmIzrqjeMfcie4Qncx6dV8TH677H/iDrvkZRH+HJPpphp4cgvrveUW8o4DejqARoQfXFSIueOM616M3IqBYsLenBK1w=
+  file_glob: true
+  file: dist/danmu-client*.zip
+  on:
+    repo: zsxsoft/danmu-client
+    branch: electron
